@@ -1,3 +1,5 @@
+import os
+
 # Задание - 1
 # Давайте опишем пару сущностей player и enemy через словарь,
 # который будет иметь ключи и значения:
@@ -10,7 +12,6 @@
 # функция должна получить параметр damage атакующего и отнять это количество
 # health от атакуемого. Функция должна сама работать с словарями и изменять их значения.
 
-
 # Задание - 2
 # Давайте усложним предыдущее задание, измените сущности, добавив новый параметр - armor = 1.2
 # Теперь надо добавить функцию, которая будет вычислять и возвращать полученный урон по формуле damage / armor
@@ -22,3 +23,29 @@
 # после чего происходит запуск игровой сессии, где сущностям поочередно наносится урон,
 # пока у одного из них health не станет меньше или равен 0.
 # После чего на экран должно быть выведено имя победителя, и количество оставшихся единиц здоровья.
+
+
+def attack(person, person2):
+    def armor(damage):
+        damage = int(damage/person2['armor'])
+        print(damage)
+        return damage
+    person2['health'] -= armor(person['damage'])
+    return person2['health']
+
+
+print('\nЗадание - 1:\n')
+
+player = {'name': input('Введите имя игрока: '), 'health': 200, 'damage': 45, 'armor': 1.2}
+enemy = {'name': 'Spider', 'health': 150, 'damage': 40, 'armor': 1.3}
+
+# path_p = os.path.join(f'{player["name"]}.txt')
+# path_e = os.path.join(f'{enemy["name"]}.txt')
+# with open(path_p, '+', encoding='utf-8'):
+#     pass
+
+attack(player, enemy)
+print(player)
+print(enemy)
+
+

@@ -1,3 +1,5 @@
+import os
+
 # Задание - 1
 # Вам даны 2 списка одинаковой длины, в первом списке имена людей, во втором зарплаты,
 # вам необходимо получить на выходе словарь, где ключ - имя, значение - зарплата.
@@ -10,3 +12,22 @@
 #  если скажем эти файлы потом придется передавать.
 # Так же при выводе имя должно быть полностью в верхнем регистре!
 # Подумайте вспоминая урок, как это можно сделать максимально кратко, используя возможности языка Python.
+
+men = ['Taras', 'Leonid', 'Olga', 'Matros', 'Gnom', 'Vova', 'Sultan', 'Kotik']
+money = [25800, 67500, 230, 45800, 250400, 510002, 48900, 27300]
+
+salary = dict(zip(men, money))
+
+path = os.path.join('salary.txt')
+with open(path, 'w+', encoding='UTF-8') as file:
+    for key, val in salary.items():
+        if val < 500000:
+            file.write(f'{key.upper()} - {val}\n')
+    file.seek(0)
+
+    for line in file:
+        f = line.strip().split(' - ')
+        f[1] = str(int(int(f[1]) * 0.87))
+        f_l = len(max(men, key=len))  # переменная для выравнивания столбцов
+        print(' - '.rjust(f_l - len(f[0]) + f_l // 2).join(f))
+
