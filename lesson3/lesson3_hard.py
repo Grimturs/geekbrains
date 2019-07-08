@@ -1,4 +1,5 @@
 import os
+import random
 
 # Задание - 1
 # Давайте опишем пару сущностей player и enemy через словарь,
@@ -28,7 +29,6 @@ import os
 def attack(person, person2):
     def armor(damage):
         damage = int(damage/person2['armor'])
-        print(damage)
         return damage
     person2['health'] -= armor(person['damage'])
     return person2['health']
@@ -41,11 +41,20 @@ enemy = {'name': 'Spider', 'health': 150, 'damage': 40, 'armor': 1.3}
 
 # path_p = os.path.join(f'{player["name"]}.txt')
 # path_e = os.path.join(f'{enemy["name"]}.txt')
-# with open(path_p, '+', encoding='utf-8'):
-#     pass
+# with open(path_p, '+', encoding='utf-8') as file:
 
-attack(player, enemy)
 print(player)
 print(enemy)
+while player['health'] >= 0 and enemy['health'] >= 0:
+    if random.randint(0, 1) > 0:
+        attack(player, enemy)
+    else:
+        attack(enemy, player)
+if player['health'] < 0:
+    print(f'Победил {enemy["name"]}, оставшееся кол-во HP: {enemy["health"]}')
+elif enemy['health'] < 0:
+    print(f'Победил {player["name"]}, оставшееся кол-во HP: {player["health"]}')
 
+print(player)
+print(enemy)
 
