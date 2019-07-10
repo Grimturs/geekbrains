@@ -15,7 +15,7 @@ import random  # импортируем модуль random для 2 и 3 зад
 
 # Подсказка: воспользоваться методом .format()
 print('\nЗадача-1:\n')
-fruits = ["яблоко", "банан", "киви", "арбуз"]
+fruits = ["яблоко", "банан", "киви", "арбуз", "апельсин"]
 
 for fruit in fruits:
     print(f'{fruits.index(fruit) + 1}. {fruit.rjust(6)}')
