@@ -33,4 +33,4 @@ for d in os.listdir(os.getcwd()):
 # Задача-3:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
 
-shutil.copyfile(__file__, f'{__file__}_copy.py')
+shutil.copyfile(__file__, f'copy_{os.path.basename(__file__)}')
